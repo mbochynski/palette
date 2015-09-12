@@ -1,7 +1,12 @@
 
-- create Rect with enlarged color
-  - move it on mouse move
-  - change its color
+- create a mesh of points = 9x9
+  - get pixels from canvas
+  - convert into XxY array
+  - draw zoomed area
+
++ create Rect with enlarged color
+  + move it on mouse move
+  + change its color
 + create Raphael paper after image is present
 + create Raphael paper with dimention of pictrue
 o img display none
