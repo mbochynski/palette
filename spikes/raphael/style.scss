@@ -1,0 +1,23 @@
+$canvas_w: 600px;
+$canvas_h: 400px;
+
+.canvas {
+
+  position: relative;
+
+  #image, #raphael {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  #image {
+    height: $canvas_h;
+    z-index: 1;
+  }
+
+  #raphael {
+    z-index: 2;
+  }
+}
+

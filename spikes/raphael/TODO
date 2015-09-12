@@ -1,5 +1,9 @@
 
-- create Raphael paper after image is present
-- create Raphael paper with dimention of pictrue
--  img display none
+- create Rect with enlarged color
+  - move it on mouse move
+  - change its color
++ create Raphael paper after image is present
++ create Raphael paper with dimention of pictrue
+o img display none
+  + img can be displayed, no need to duplicate, just draw on raphael on img
 
