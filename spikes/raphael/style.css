@@ -1,6 +1,6 @@
 .canvas {
   position: relative;
-  cursor: url(cursor.cur), crosshair; }
+  cursor: crosshair; }
   .canvas #image, .canvas #raphael {
     position: absolute;
     top: 0;

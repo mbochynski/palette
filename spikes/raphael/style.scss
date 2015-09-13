@@ -4,7 +4,8 @@ $canvas_h: 400px;
 .canvas {
 
   position: relative;
-  cursor: url(cursor.cur), crosshair;
+  //cursor: url(cursor.cur), crosshair;
+  cursor: crosshair;
 
   #image, #raphael {
     position: absolute;

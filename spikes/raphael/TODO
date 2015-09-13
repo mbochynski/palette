@@ -1,8 +1,10 @@
 
 - create a mesh of points = 9x9
-  - get pixels from canvas
-  - convert into XxY array
-  - draw zoomed area
+  + get pixels from canvas
+  + convert into XxY array
+  + draw zoomed area
+  - beautify zoomed area - stroke color, 'bold' central element
+
 
 + create Rect with enlarged color
   + move it on mouse move
