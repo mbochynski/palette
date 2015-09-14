@@ -1,5 +1,7 @@
 var enlargeOffset = 4; //we will take 9x9 grid 4 + 1 + 4
 var gridSize = enlargeOffset * 2 + 1;
+var enlargeSize = 12;
+var raphael_dim_offset = (gridSize + 1) * enlargeSize;
 
 var image = document.getElementById('image');
 var paper_dim = {
@@ -16,7 +18,7 @@ context.drawImage(image, 0, 0, paper_dim.width, paper_dim.height);
 
 var raphael_container = document.getElementById('raphael');
 
-var paper = Raphael(raphael_container, paper_dim.width, paper_dim.height);
+var paper = Raphael(raphael_container, paper_dim.width + raphael_dim_offset, paper_dim.height + raphael_dim_offset);
 var area = paper.rect(0, 0, paper_dim.width, paper_dim.height);
 area.attr({
   "stroke-width": 0,
@@ -33,9 +35,11 @@ var y;
 for(x; x < gridSize; x++){
   for(y = 0; y < gridSize; y++){
     zoomed_el = paper
-      .rect(0, 0, 10, 10)
+      .rect(0, 0, enlargeSize, enlargeSize)
       .attr({
         "stroke-width": 0,
+        "stroke": '#888',
+        "stroke-opacity": 0.5,
         "fill": '#00f',
         "fill-opacity": '1',
       });
@@ -44,6 +48,13 @@ for(x; x < gridSize; x++){
   zoomed.push(zoomed_row);
   zoomed_row = [];
 }
+zoomed[enlargeOffset][enlargeOffset].attr({
+    "stroke-width": 1,
+    "stroke": "#FF827D",
+    "stroke": "#999",
+    "stroke": "#787276",
+  })
+  .toFront();
 
 
 function groupImageData(data){
@@ -52,6 +63,7 @@ function groupImageData(data){
   //[ [ color, opacity ], [ color, opacity ], ... ]
   //color is hex #ff00ff; opacity is float 0 - 1
   var grouped = [];
+  data = Array.prototype.slice.call(data);
   data.forEach(function(val, i, arr){
     if(i % 4 === 0){
       grouped.push([Raphael.rgb(arr[i], arr[i + 1], arr[i + 2]), arr[i + 3]/255]);
@@ -74,7 +86,7 @@ function arrayToGrid(arr, cols){
 }
 
 function moveOffset(x, cx, cxs){
-  return 10 + x + cx * cxs;
+  return enlargeSize + x + cx * cxs;
 }
 
 function moveElementWithColor(el, x, y, color_arr){
@@ -83,10 +95,9 @@ function moveElementWithColor(el, x, y, color_arr){
   var cy = 0;
   grid.forEach(function(row, i, a){
     row.forEach(function(item, ii, aa){
-      console.log( cx, cy );
       el[cy][cx].attr({
-        x: moveOffset(x, cx, 11),
-        y: moveOffset(y, cy, 11),
+        x: moveOffset(x, cx, enlargeSize),
+        y: moveOffset(y, cy, enlargeSize),
         fill: item[0]
       });
       cx++;
@@ -100,10 +111,13 @@ var x, y;
 area.mousemove(function(ev){
   x = ev.layerX;
   y = ev.layerY;
+  console.log( x, y );
+  if(x > paper_dim.width - 1 || y > paper_dim.height - 1) {
+    return;
+  }
   data = context
     .getImageData(x - enlargeOffset, y - enlargeOffset, gridSize, gridSize)
     .data;
   moveElementWithColor(zoomed, x, y, data);
-  console.log(data[0], data[1], data[2], data[3]);
 });
 
