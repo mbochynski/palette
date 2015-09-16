@@ -14,6 +14,7 @@ $canvas_h: 400px;
   }
 
   #image {
+    position: relative;
     height: $canvas_h;
     z-index: 1;
   }
@@ -21,5 +22,10 @@ $canvas_h: 400px;
   #raphael {
     z-index: 2;
   }
+
+}
+
+.palette {
+  margin: 0 auto;
 }
 

@@ -6,9 +6,17 @@
     top: 0;
     left: 0; }
   .canvas #image {
+    position: relative;
     height: 400px;
     z-index: 1; }
   .canvas #raphael {
     z-index: 2; }
+
+.clear {
+  clear: both; }
+
+.palette {
+  clear: both;
+  margin: 0 auto; }
 
 /*# sourceMappingURL=style.css.map */
