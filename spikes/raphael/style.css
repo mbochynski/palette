@@ -1,22 +1,41 @@
 .canvas {
   position: relative;
-  cursor: crosshair; }
+  cursor: crosshair;
+  width: 70%;
+  margin: 0 auto; }
   .canvas #image, .canvas #raphael {
     position: absolute;
     top: 0;
     left: 0; }
   .canvas #image {
     position: relative;
-    height: 400px;
+    width: 100%;
     z-index: 1; }
   .canvas #raphael {
     z-index: 2; }
-
-.clear {
-  clear: both; }
-
-.palette {
-  clear: both;
-  margin: 0 auto; }
+  .canvas .pallete {
+    text-align: center;
+    padding-top: 1em; }
+    .canvas .pallete div {
+      height: 4em;
+      width: 4em;
+      background-color: red;
+      display: inline-block;
+      border: solid white 1px;
+      border-radius: 1em;
+      position: relative; }
+      .canvas .pallete div:hover::after {
+        content: '\2296';
+        background-color: white;
+        opacity: 0.5;
+        width: 1em;
+        height: 1em;
+        line-height: 1em;
+        border-radius: 1em;
+        display: inline-block;
+        position: absolute;
+        right: 0;
+        margin-right: .2em;
+        margin-top: .2em; }
 
 /*# sourceMappingURL=style.css.map */

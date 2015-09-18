@@ -121,3 +121,26 @@ area.mousemove(function(ev){
   moveElementWithColor(zoomed, x, y, data);
 });
 
+var selectedColorsDiv = document.getElementById('selectedColors');
+
+function addPickedColor(data) {
+  var color = Raphael.rgb(data[0], data[1], data[2]);
+
+  var colorDiv = document.createElement('div');
+  colorDiv.style['backgroundColor'] = color;
+  selectedColorsDiv.appendChild(colorDiv);
+}
+
+area.click(function(ev){
+  x = ev.layerX;
+  y = ev.layerY;
+  console.log( x, y );
+  if(x > paper_dim.width - 1 || y > paper_dim.height - 1) {
+    return;
+  }
+  data = context
+    .getImageData(x, y, 1, 1)
+    .data;
+  addPickedColor(data);
+});
+
