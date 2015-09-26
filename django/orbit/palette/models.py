@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Color(models.Model):
@@ -11,6 +12,19 @@ class Color(models.Model):
 
 class Palette(models.Model):
     colors = models.ManyToManyField(Color)
+    dateUpload = models.DateTimeField(auto_now_add=True)
+    dateVisited = models.DateTimeField()
+    user = models.ForeignKey(User)
+    image = models.ForeignKey('Image')
+    published = models.BooleanField(default=0)
+    moderated = models.BooleanField(default=0)
+    upvotes = models.PositiveIntegerField(default=0)
+    downvotes = models.PositiveIntegerField(default=0)
+    visits = models.PositiveIntegerField(default=0)
 
-
+class Image(models.Model):
+    source = models.CharField(max_length=20000)
+    image = models.ImageField("images")
+    uploader = models.ForeignKey(User)
+    date = models.DateTimeField(auto_now_add=True)
 
