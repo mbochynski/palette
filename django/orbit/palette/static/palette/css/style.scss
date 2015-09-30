@@ -1,0 +1,59 @@
+$canvas_w: 600px;
+$canvas_h: 400px;
+
+.canvas {
+
+  position: relative;
+  //cursor: url(cursor.cur), crosshair;
+  cursor: crosshair;
+  width: 70%;
+  margin: 0 auto;
+
+  #image, #raphael {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  #image {
+    position: relative;
+    width: 100%;
+    z-index: 1;
+  }
+
+  #raphael {
+    z-index: 2;
+  }
+
+  .pallete {
+    text-align: center;
+    padding-top: 1em;
+
+    div {
+      height: 4em;
+      width: 4em;
+      background-color: red;
+      display: inline-block;
+      border: solid white 1px;
+      border-radius: 1em;
+      position: relative;
+
+      &:hover::after {
+        content: '\2296';
+        background-color: white;
+        opacity: 0.5;
+        width: 1em;
+        height: 1em;
+        line-height: 1em;
+        border-radius: 1em;
+        display: inline-block;
+        position: absolute;
+        right: 0;
+        margin-right: .2em;
+        margin-top: .2em;
+      }
+    }
+  }
+}
+
+
